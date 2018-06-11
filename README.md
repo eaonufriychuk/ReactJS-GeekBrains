@@ -1,6 +1,6 @@
 # ReactJS-GeekBrains
 
-Как запустить
+## Как запустить
 
 ```bash
 git clone https://github.com/eaonufriychuk/ReactJS-GeekBrains.git
