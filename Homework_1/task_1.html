@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_1</title>
+</head>
+<body>
+<script>
+    'use strict';
+
+    // 1. Написать функцию loop, которая будет принимать параметры: times (значение по умолчанию = 0),
+    // callback (значение по умолчанию = null) и будет в цикле (times раз), вызывать функцию callback.
+    // Если функция не передана, то цикл не должен отрабатывать ни разу. Покажите применение этой функции.
+
+    /**
+     * Функция loop
+     * @param {number} times Количество итераций.
+     * @param {function} callback Коллбэк функция.
+     */
+    function loop(times = 0, callback = null) {
+        if (typeof times === 'number' && typeof callback === 'function') {
+            for (let i = 0; i < times; i++) {
+                callback();
+            }
+        }
+    }
+
+    loop(10, () => console.log('Hello!'));
+
+
+</script>
+</body>
+</html>

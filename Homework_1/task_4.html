@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_4</title>
+</head>
+<body>
+<script>
+    'use strict';
+
+    // 4. *При помощи генератора написать функцию-анкету, которая запрашивает у пользователя на ввод параметры и
+    // передает их в генератор. В конце, когда генератор завершается, он должен вернуть все введенные входные параметры
+    // в виде объекта. Этот объект нужно вывести в консоли.
+
+    /**
+     * Функция генератор.
+     */
+    function* generateSequence() {
+        yield prompt(`What's your name?`);
+        yield prompt(`What's your age?`);
+        yield prompt(`What's your date of birth?`);
+        yield prompt(`What's your salary?`);
+        return prompt(`What's your department?`);
+    }
+
+    /**
+     * Функция - анкета.
+     * @return {{userName: *, userAge: *, userDateOfBirth: *, userSalary: *, userDepartment: *}} Объект с параметрами.
+     */
+    function generateUser() {
+        const generator = generateSequence();
+        const userName = generator.next().value;
+        const userAge = generator.next().value;
+        const userDateOfBirth = generator.next().value;
+        const userSalary = generator.next().value;
+        const userDepartment = generator.next().value;
+
+        return {userName, userAge, userDateOfBirth, userSalary, userDepartment};
+    }
+
+    console.log(generateUser());
+
+</script>
+</body>
+</html>
