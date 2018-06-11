@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_3</title>
+</head>
+<body>
+<script>
+    'use strict';
+
+    /**
+     * Класс Human.
+     */
+    class Human {
+        /**
+         * Конструктор класса Human.
+         * @param {string} name Имя.
+         * @param {int} age Возраст.
+         * @param {string|object} dateOfBirth Дата рождения.
+         */
+        constructor(name, age, dateOfBirth) {
+            if (typeof name === 'string') {
+                this.name = name;
+            }
+
+            if (typeof age === 'number') {
+                this.age = age;
+            }
+
+            if (typeof dateOfBirth === 'string' || dateOfBirth instanceof Date) {
+                this.dateOfBirth = dateOfBirth;
+            }
+        }
+
+        /**
+         * Метод, который выводит свойства класса.
+         */
+        displayInfo() {
+            console.log(`${Object.getOwnPropertyNames(this)}`);
+        }
+
+    }
+
+    /**
+     * Класс Employee, который является наследником класса Human.
+     */
+    class Employee extends Human {
+        /**
+         * Конструктор класса Employee
+         * @param {string} name Имя.
+         * @param {int} age Возраст.
+         * @param {string|object} dateOfBirth Дата рождения.
+         * @param {int} salary Оклад.
+         * @param {string} department Отдел.
+         */
+        constructor(name, age, dateOfBirth, salary, department) {
+            super(name, age, dateOfBirth);
+
+            if (typeof salary === 'number') {
+                this.salary = salary;
+            }
+
+            if (typeof department === 'string') {
+                this.department = department;
+            }
+        }
+
+        /**
+         * Метод, который выводит свойства класса.
+         */
+        displayInfo() {
+            super.displayInfo();
+        }
+    }
+
+    /**
+     * Класс Developer, который является наследником класса Employee.
+     */
+    class Developer extends Employee {
+        /**
+         * Конструктор класса Developer.
+         * @param {string} name Имя.
+         * @param {int} age Возраст.
+         * @param {string|object} dateOfBirth Дата рождения.
+         * @param {int} salary Оклад.
+         * @param {string} department Отдел.
+         * @param {object} manager Экземпляр класса Manager.
+         */
+        constructor(name, age, dateOfBirth, salary, department, manager) {
+            super(name, age, dateOfBirth, salary, department);
+            if (manager instanceof Manager) {
+                this.manager = manager;
+            }
+        }
+
+        /**
+         * Метод для изменения менеджера.
+         * @param {object} manager Экземпляр класса Manager.
+         */
+        changeManager(manager) {
+            if (manager instanceof Manager) {
+                this.manager = manager;
+            }
+        }
+    }
+
+    /**
+     * Класс Manager, который является наследником класса Employee.
+     */
+    class Manager extends Employee {
+        /**
+         * Конструктор класса Manager.
+         * @param {string} name Имя.
+         * @param {int} age Возраст.
+         * @param {string|object} dateOfBirth Дата рождения.
+         * @param {int} salary Оклад.
+         * @param {string} department Отдел.
+         */
+        constructor(name, age, dateOfBirth, salary, department) {
+            super(name, age, dateOfBirth, salary, department);
+            this.developerList = [];
+        }
+
+        /**
+         * Метод, который добавляет разработчика.
+         * @param {object} developer Экземпляр класса Developer.
+         */
+        addDeveloper(developer) {
+            if (developer instanceof Developer && !this.developerList.some(value => value === developer)) {
+                this.developerList.push(developer);
+            }
+        }
+
+        /**
+         * Метод, который удаляет разработчика.
+         * @param {object} developer Экземпляр класса Developer.
+         */
+        fireDeveloper(developer) {
+            if (developer instanceof Developer && this.developerList.some(value => value === developer)) {
+                const index = this.developerList.indexOf(developer);
+                this.developerList.splice(index, 1);
+            }
+        }
+
+    }
+
+    const manager = new Manager('Вася', 30, '25/07/2017', 100000, 'HR');
+    const developer1 = new Developer('Вася', 27, '25/07/2017', 50000, 'Front-end', manager);
+    const developer2 = new Developer('Петя', 28, '28/07/2017', 60000, 'Back-end', manager);
+
+    manager.addDeveloper(developer1);
+    manager.addDeveloper(developer2);
+    manager.addDeveloper(manager);
+    manager.displayInfo();
+
+    console.log(manager);
+
+</script>
+</body>
+</html>

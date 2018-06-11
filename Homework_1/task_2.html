@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_2</title>
+</head>
+<body>
+<script>
+    'use strict';
+
+    // 2. Написать функцию calculateArea, которая будет принимать параметры для вычисления площади
+    // (можете выбрать конкретную фигуру или, основываясь на переданных параметрах, выполнять требуемый алгоритм
+    // вычисления площади для переданной в параметрах фигуры) и возвращать объект вида: { area, figure, input }
+    // (где area – вычисленная площадь, figure – название фигуры, для которой вычислялась площадь,
+    // input – входные параметры, по которым было произведено вычисление.
+
+    /**
+     * Функция, которая вычисляет площадь фигуры по заданным парметрам.
+     * @param {int} input Параметры для вычисления площади.
+     * @return {object} Объект вида: { area, figure, input }.
+     */
+    function calculateArea(...input) {
+        const [a, b, c] = input;
+
+        if (!input.length) {
+            throw new Error('аргументы не переданы');
+        } else if (1 === input.length || input.length > 3) {
+            throw new Error('аргументов меньше 2-х или больше 3-х')
+        } else if (!input.every(value => typeof value === 'number')) {
+            throw new Error('аргументы должны быть числами');
+        } else if (input.length === 3 && (a + b <= c || a + c <= b || c + b <= a)) {
+            throw new Error('для расчета площади треугольника необходимо, чтобы выполнялось условие -' +
+                ' каждая сторона трегольника меньше суммы двух других сторон ');
+        }
+
+        const figure = defineFigure(input.length);
+
+        /**
+         * Функция, которая определяет вил фигуры.
+         * @param {int} argsLength длина массива.
+         * @return {string} Название фигуры.
+         */
+        function defineFigure(argsLength) {
+            if (argsLength === 2 && a === b) {
+                return 'Квадрат';
+            } else if (argsLength === 2) {
+                return 'Прямоугольник';
+            } else {
+                return 'Треугольник';
+            }
+        }
+
+        let area = 0;
+        if (input.length === 2) {
+            area = Math.round(a * b * 100) / 100;
+        } else if (input.length === 3) {
+            const p = (a + b + c) / 2;
+            area = Math.round(Math.sqrt(p * (p - a) * (p - b) * (p - c)) * 100) / 100;
+        }
+
+        return {area, figure, input};
+    }
+
+    console.log(calculateArea(6, 7));
+
+
+</script>
+</body>
+</html>
