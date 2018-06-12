@@ -1,5 +1,3 @@
-'use strict';
-
 import './user.css';
 import User from './User';
 

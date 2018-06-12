@@ -1,6 +1,4 @@
-'use strict';
-
-import Human from "./Human";
+import Human from './Human';
 
 export default class User extends Human {
     constructor(firstName, lastName, login, age) {
@@ -44,7 +42,7 @@ export default class User extends Human {
      * @param {HTMLElement} button - Кнопка.
      */
     renderDate(container, button) {
-        let {isOpen} = this.state;
+        const {isOpen} = this.state;
         const dateContainer = document.createElement('p');
         const date = document.createElement('span');
         date.textContent = `${User.formatDate(new Date)}`;

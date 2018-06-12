@@ -12,11 +12,11 @@
   "author": "Egor Onufriychuk",
   "license": "ISC",
   "dependencies": {
-    "css-loader": "^0.28.11",
-    "react": "^16.4.0",
-    "style-loader": "^0.21.0"
+    "react": "^16.4.0"
   },
   "devDependencies": {
+    "css-loader": "^0.28.11",
+    "style-loader": "^0.21.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",

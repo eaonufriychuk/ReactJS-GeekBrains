@@ -1,5 +1,3 @@
-'use strict';
-
 export default class Human{
     constructor(firstName, lastName){
         if(typeof firstName === 'string'&& typeof lastName === 'string') {
