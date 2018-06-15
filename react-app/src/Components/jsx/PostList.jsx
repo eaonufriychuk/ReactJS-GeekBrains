@@ -44,7 +44,7 @@ const posts = [
 export default class PostList extends React.Component {
     render() {
         return (
-            <div className='posts'>
+            <div className="posts">
                 {posts.map(post => <Post key={post.id} {...post} />)}
             </div>);
     }

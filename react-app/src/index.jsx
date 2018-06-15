@@ -49,10 +49,10 @@ const footer = [
 class App extends Component {
     render() {
         return (
-            <div className='wrapper'>
-                <div className='content'>
+            <div className="wrapper">
+                <div className="content">
                     <Menu items={menuItems}/>
-                    <div className='container-list'>
+                    <div className="container-list">
                         <SideBar items={sideBar}/>
                         <PostList/>
                     </div>

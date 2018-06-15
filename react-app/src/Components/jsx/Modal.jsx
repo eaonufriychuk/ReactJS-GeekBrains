@@ -20,25 +20,25 @@ export default class ModalExample extends React.Component {
     render() {
         return (
             <div>
-                <Button color='danger' onClick={this.toggle}>Login</Button>
+                <Button color="danger" onClick={this.toggle}>Login</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>Login</ModalHeader>
                     <ModalBody>
-                        <form className='form'>
-                            <input type='text' className='form-control' placeholder='Email' required autoFocus/>
-                            <input type='password' className='form-control' placeholder='Password' required/>
-                            <div className='info'>
-                                <label className='checkbox'>
-                                    <input type='checkbox' value='remember-me'/>
+                        <form className="form">
+                            <input type="text" className="form-control" placeholder="Email" required autoFocus/>
+                            <input type="password" className="form-control" placeholder="Password" required/>
+                            <div className="info">
+                                <label className="checkbox">
+                                    <input type="checkbox" value="remember-me"/>
                                     Remember me
                                 </label>
-                                <a href='#' className='need-help'>Need help? </a>
+                                <a href="#" className="need-help">Need help? </a>
                             </div>
-                            <a href='#' className='new-account'>Create an account </a>
+                            <a href="#" className="new-account">Create an account </a>
                         </form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color='primary' onClick={this.toggle}>Sign in</Button>
+                        <Button color="primary" onClick={this.toggle}>Sign in</Button>
                     </ModalFooter>
                 </Modal>
             </div>
