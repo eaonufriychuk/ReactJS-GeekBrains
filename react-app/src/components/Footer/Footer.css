@@ -1,0 +1,28 @@
+.footer {
+    height: 100px;
+    clear: both;
+    background-color: #f4f4f4;
+    border: 1px solid #ececec;
+}
+
+.rights p {
+    color: #7a7a7a;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 42px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+}
+
+.icons:last-child {
+    margin-right: 0;
+}
+
+.icon {
+    margin-right: 8px;
+}
