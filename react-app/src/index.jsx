@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Menu from './Components/jsx/Menu.jsx';
-import Footer from './Components/jsx/Footer.jsx';
-import PostList from './Components/jsx/PostList.jsx';
-import SideBar from './Components/jsx/SideBar.jsx';
+import Menu from 'components/Menu';
+import Footer from 'components/Footer';
+import PostList from 'components/PostList';
+import SideBar from 'components/SideBar';
 import './index.css';
 
 const menuItems = [

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Modal from './Modal.jsx';
-import '../css/Menu.css';
+import Modal from '../Modal';
+import './Menu.css';
 
 export default class Menu extends Component {
     render() {

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
-import '../css/Login.css';
+import './Modal.css';
 
 export default class ModalExample extends React.Component {
     constructor(props) {
