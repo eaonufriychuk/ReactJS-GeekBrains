@@ -1,0 +1,49 @@
+@keyframes splash {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes hide {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.modal-window {
+    padding: 20px;
+    position: fixed;
+    z-index: 20;
+    width: 600px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    font-size: 30px;
+    background: oldlace;
+    transform: translate(-50%, -50%);
+    animation: splash 1s ease-in-out;
+}
+
+.modal-hide {
+    animation: hide 1s ease-in-out;
+}
+
+.button-group {
+    position: relative;
+}
+
+#modal-close {
+    position: absolute;
+    top: 0;
+}
+
+.text {
+    text-align: center;
+    padding: 100px;
+}

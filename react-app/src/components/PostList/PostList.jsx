@@ -1,6 +1,7 @@
+import '../Post/Post.css';
+
 import React from 'react';
 import Post from '../Post/index';
-import '../Post/Post.css';
 
 const posts = [
     {
@@ -44,7 +45,7 @@ const posts = [
 export default class PostList extends React.Component {
     render() {
         return (
-            <div className="posts">
+            <div className="col-9">
                 {posts.map(post => <Post key={post.id} {...post} />)}
             </div>);
     }
