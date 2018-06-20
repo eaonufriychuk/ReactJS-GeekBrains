@@ -1,11 +1,13 @@
+import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import React, {Component} from 'react';
 import ReactDom from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Menu from 'components/Menu';
 import Footer from 'components/Footer';
 import PostList from 'components/PostList';
 import SideBar from 'components/SideBar';
-import './index.css';
+import ModalWindow from "components/ModalWindow";
 
 const menuItems = [
     {
@@ -45,16 +47,32 @@ const footer = [
     }
 ];
 
-
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showModal: true
+        };
+    }
+
+    onModalClose = () => {
+        this.setState({showModal: false})
+    };
+
     render() {
+        const {showModal} = this.state;
+
         return (
             <div className="wrapper">
+                <div className="layer"></div>
+                {showModal && <ModalWindow onModalClose={this.onModalClose}/>}
                 <div className="content">
-                    <Menu items={menuItems}/>
-                    <div className="container-list">
-                        <SideBar items={sideBar}/>
-                        <PostList/>
+                    <Menu selector="menu" items={menuItems} modalShow="true"/>
+                    <div className="body container">
+                        <div className="row">
+                            <SideBar items={sideBar}/>
+                            <PostList/>
+                        </div>
                     </div>
                 </div>
                 <Footer items={footer}/>
