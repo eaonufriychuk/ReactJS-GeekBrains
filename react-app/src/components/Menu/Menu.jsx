@@ -1,18 +1,14 @@
 import './Menu.css';
 
-import React, {Component} from 'react';
-import Modal from '../Modal';
+import React, { Fragment } from 'react';
 
-export default class Menu extends Component {
-    render() {
-        const {selector, items, modalShow} = this.props;
+export default (props)=>{
+    const { selector, items } = props;
         return (
-            <div className={selector}>
-                <ul className={ selector +"-list"}>
-                    {items.map(item => <li key={item.id}><a href={item.link}>{item.title}</a></li>)}
+            <Fragment>
+                <ul className={ selector +"-list" }>
+                    { items.map(item => <li key={item.id}><a href={item.link}>{item.title}</a></li>) }
                 </ul>
-                {modalShow? <Modal/>: null}
-            </div>
+            </Fragment>
         );
-    }
 }

@@ -42,11 +42,9 @@ const posts = [
     },
 ];
 
-export default class PostList extends React.Component {
-    render() {
-        return (
-            <div className="col-9">
-                {posts.map(post => <Post key={post.id} {...post} />)}
-            </div>);
-    }
+export default () => {
+    return (
+        <div className="col-9">
+            {posts.map(post => <Post key={post.id} {...post} />)}
+        </div>);
 }
