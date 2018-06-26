@@ -1,4 +1,4 @@
-import Index from 'components/Index';
+import Home from 'components/Home';
 import Blog from 'containers/BlogContainer';
 import Comments from 'components/Comments';
 import UserList from 'containers/UserListContainer';
@@ -11,7 +11,7 @@ export default [{
     id: v4(),
     path: '/',
     exact: true,
-    component: Index
+    component: Home
   },
   {
     id: v4(),
