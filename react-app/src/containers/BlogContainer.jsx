@@ -21,19 +21,15 @@ export default class BlogContainer extends PureComponent {
         fetch(`https://jsonplaceholder.typicode.com/posts/?limit=10&_page=${page}`)
             .then((response) => response.json())
             .then((result) => {
-                console.log(result);
                 this.setState({
                     page: page + 1,
                     posts: [...posts, ...result],
                     loading: false
                 })
-                console.log(page)
             })
             .catch(() => {
                 this.setState({ loading: false });
             });
-
-        console.log(posts);
     }
 
     componentDidMount() {
