@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 
-import PostList from '../components/PostList/index';
+import PostList from '../components/PostList';
 
 export default class BlogContainer extends PureComponent {
     constructor(props) {
@@ -10,7 +10,6 @@ export default class BlogContainer extends PureComponent {
             posts: [],
             loading: false,
         }
-
     }
 
     loadPosts() {

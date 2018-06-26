@@ -1,7 +1,7 @@
 import '../Post/Post.css';
 
 import React from 'react';
-import Post from '../Post/index';
+import Post from '../Post';
 
 export default ({ onLoadPosts, posts }) => {
     return (
