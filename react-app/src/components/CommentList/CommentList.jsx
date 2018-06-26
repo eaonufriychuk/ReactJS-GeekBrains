@@ -2,6 +2,7 @@ import './CommentList.css';
 
 import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'react-redux';
+
 import { addToDO, removeToDO } from '../../actions';
 import { v4 } from 'uuid';
 
@@ -23,6 +24,7 @@ class CommentList extends PureComponent {
 
     render() {
         const { toDoList, onRemove } = this.props;
+        console.log(toDoList);
 
         return (
             <div className="col-9" >
@@ -54,8 +56,8 @@ class CommentList extends PureComponent {
                 </div>
                 <div className="content-wrap">
                     <Fragment>
-                        {toDoList.map(comment => {
-                            (<div className="card">
+                        {toDoList.map((comment) => {
+                            return (<div key={comment.id} className="card" >
                                 <div className="card-header">
                                     <h4>{comment.userName}</h4>
                                 </div>
@@ -66,13 +68,13 @@ class CommentList extends PureComponent {
                                     </div>
                                 </div>
                             </div>)
-                        })}
+                        })
+                        }
                     </Fragment>
                 </div>
             </div>
         );
     }
-
 }
 
 export default connect(
