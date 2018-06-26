@@ -1,6 +1,6 @@
 import Home from 'components/Home';
 import Blog from 'containers/BlogContainer';
-import Comments from 'components/Comments';
+import CommentList from 'components/CommentList';
 import UserList from 'containers/UserListContainer';
 import User from 'containers/UserContainer';
 import {
@@ -23,7 +23,7 @@ export default [{
     id: v4(),
     path: '/comments',
     exact: true,
-    component: Comments
+    component: CommentList
   },
   {
     id: v4(),
