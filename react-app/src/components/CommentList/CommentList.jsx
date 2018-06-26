@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import { addToDO, removeToDO } from '../../actions';
 import { v4 } from 'uuid';
+import { formatDate } from '../../consts/consts';
 
 class CommentList extends PureComponent {
 
@@ -13,7 +14,8 @@ class CommentList extends PureComponent {
             const comment = {
                 id: v4(),
                 userName: event.target.userName.value.trim(),
-                userComment: event.target.userComment.value.trim()
+                userComment: event.target.userComment.value.trim(),
+                date: formatDate(new Date())
             }
 
             this.props.handleAddToDO(comment);
@@ -58,13 +60,18 @@ class CommentList extends PureComponent {
                     <Fragment>
                         {toDoList.map((comment) => {
                             return (<div key={comment.id} className="card" >
-                                <div className="card-header">
+                                <div className="card-header user-header">
                                     <h4>{comment.userName}</h4>
+                                    <div className="date">{comment.date}</div>
                                 </div>
-                                <div className="card-body">
-                                    {comment.userComment}
+                                <div className="card-body container">
+                                    <div className="user-comment">
+                                        {comment.userComment}
+                                    </div>
                                     <div>
-                                        <button className="btn btn-toolbar" onClick={onRemove(comment.id)}>Delete</button>
+                                        <div className="button-delete">
+                                            <button className="btn btn-toolbar" onClick={onRemove(comment.id)}>Delete</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>)
