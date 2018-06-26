@@ -2,6 +2,8 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import React, { PureComponent, Fragment } from 'react';
+import { Provider } from 'react-redux';
+import store from '../store';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
@@ -38,9 +40,11 @@ export default class Main extends PureComponent {
                             <div className="body container">
                                 <div className="row">
                                     <SideBar items={sideBar} />
-                                    <Switch>
-                                        {routes.map(route => <Route key={route.id} {...route} />)}
-                                    </Switch>
+                                    <Provider store={store}>
+                                        <Switch>
+                                            {routes.map(route => <Route key={route.id} {...route} />)}
+                                        </Switch>
+                                    </Provider>
                                 </div>
                             </div>
                         </Fragment>

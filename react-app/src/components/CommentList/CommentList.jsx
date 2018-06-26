@@ -1,8 +1,6 @@
 import './CommentList.css';
 
 import React, { PureComponent, Fragment } from 'react';
-import { Provider } from 'react-redux';
-import store from '../../store';
 import { connect } from 'react-redux';
 import { addToDO, removeToDO } from '../../actions';
 import { v4 } from 'uuid';
@@ -27,53 +25,51 @@ class CommentList extends PureComponent {
         const { toDoList, onRemove } = this.props;
 
         return (
-            <Provider store={store}>
-                <div className="col-9" >
-                    <div className="comments">
-                        <form
-                            className="input-group form form-comment"
-                            onSubmit={this.handleSubmit}
-                        >
-                            <label htmlFor="userName" style={{ display: 'block' }}>
-                                <input
-                                    className="form-control"
-                                    name="userName"
-                                    type="text"
-                                    placeholder="add username"
-                                    required
-                                />
-                            </label>
-                            <label htmlFor="userComment" style={{ display: 'block' }}>
-                                <input
-                                    className="form-control"
-                                    name="userComment"
-                                    type="text"
-                                    placeholder="add your comment"
-                                    required
-                                />
-                            </label>
-                            <input className="btn btn-primary" type="submit" value="Add comment" />
-                        </form>
-                    </div>
-                    <div className="content-wrap">
-                        <Fragment>
-                            {toDoList.map(comment => {
-                                (<div className="card">
-                                    <div className="card-header">
-                                        <h4>{comment.userName}</h4>
-                                    </div>
-                                    <div className="card-body">
-                                        {comment.userComment}
-                                        <div>
-                                            <button className="btn btn-toolbar" onClick={onRemove(comment.id)}>Delete</button>
-                                        </div>
-                                    </div>
-                                </div>)
-                            })}
-                        </Fragment>
-                    </div>
+            <div className="col-9" >
+                <div className="comments">
+                    <form
+                        className="input-group form form-comment"
+                        onSubmit={this.handleSubmit}
+                    >
+                        <label htmlFor="userName" style={{ display: 'block' }}>
+                            <input
+                                className="form-control"
+                                name="userName"
+                                type="text"
+                                placeholder="add username"
+                                required
+                            />
+                        </label>
+                        <label htmlFor="userComment" style={{ display: 'block' }}>
+                            <input
+                                className="form-control"
+                                name="userComment"
+                                type="text"
+                                placeholder="add your comment"
+                                required
+                            />
+                        </label>
+                        <input className="btn btn-primary" type="submit" value="Add comment" />
+                    </form>
                 </div>
-            </Provider>
+                <div className="content-wrap">
+                    <Fragment>
+                        {toDoList.map(comment => {
+                            (<div className="card">
+                                <div className="card-header">
+                                    <h4>{comment.userName}</h4>
+                                </div>
+                                <div className="card-body">
+                                    {comment.userComment}
+                                    <div>
+                                        <button className="btn btn-toolbar" onClick={onRemove(comment.id)}>Delete</button>
+                                    </div>
+                                </div>
+                            </div>)
+                        })}
+                    </Fragment>
+                </div>
+            </div>
         );
     }
 
