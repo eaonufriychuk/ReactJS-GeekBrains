@@ -1,6 +1,7 @@
 import './CommentList.css';
 
 import React, { PureComponent, Fragment } from 'react';
+import Comment from '../Comment';
 import { connect } from 'react-redux';
 
 import { addToDO, removeToDO } from '../../actions';
@@ -58,25 +59,7 @@ class CommentList extends PureComponent {
                 </div>
                 <div className="content-wrap">
                     <Fragment>
-                        {toDoList.map((comment) => {
-                            return (<div key={comment.id} className="card" >
-                                <div className="card-header user-header">
-                                    <h4>{comment.userName}</h4>
-                                    <div className="date">{comment.date}</div>
-                                </div>
-                                <div className="card-body container">
-                                    <div className="user-comment">
-                                        {comment.userComment}
-                                    </div>
-                                    <div>
-                                        <div className="button-delete">
-                                            <button className="btn btn-toolbar" onClick={onRemove(comment.id)}>Delete</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>)
-                        })
-                        }
+                        {toDoList.map((comment) => <Comment {...comment} onRemove={onRemove} />)}
                     </Fragment>
                 </div>
             </div>

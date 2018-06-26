@@ -1,0 +1,14 @@
+.user-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-comment {
+  padding: 20px;
+}
+
+.button-delete {
+  padding-left: 20px;
+  margin-top: 10px;
+}
