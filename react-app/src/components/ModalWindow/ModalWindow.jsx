@@ -1,11 +1,11 @@
 import './ModalWindow.css';
 
-import React, {Component} from "react";
+import React, { PureComponent } from "react";
 
-export default class ModalWindow extends Component {
+export default class ModalWindow extends PureComponent {
     constructor(props) {
         super(props);
-        this.state = {close: false};
+        this.state = { close: false };
     }
 
     modalClose = e => {
@@ -13,7 +13,7 @@ export default class ModalWindow extends Component {
             (this.node && !this.node.contains(e.target)) ||
             e.target.id === "modalClose"
         ) {
-            this.setState({close: true});
+            this.setState({ close: true });
             setTimeout(() => {
                 const layer = document.querySelector('.layer');
 
@@ -31,7 +31,7 @@ export default class ModalWindow extends Component {
     }
 
     render() {
-        const {close} = this.state;
+        const { close } = this.state;
 
         return (
             <div
@@ -39,12 +39,12 @@ export default class ModalWindow extends Component {
                 className={"modal-window" + (close ? " modal-hide" : "")}
             >
                 <div className="button-group">
-                <button className="btn btn-secondary" id="modalClose" onClick={this.modalClose}>
-                    close
+                    <button className="btn btn-secondary" id="modalClose" onClick={this.modalClose}>
+                        close
                 </button>
                 </div>
                 <div className="text">
-                <h1>Hello!</h1>
+                    <h1>Hello!</h1>
                 </div>
             </div>
         );

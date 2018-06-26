@@ -1,51 +1,18 @@
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import React, { Component } from 'react';
+import React, { PureComponent, Fragment } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import SideBar from 'components/SideBar';
 import ModalWindow from "components/ModalWindow";
 
-const menuItems = [
-    {
-        id: 1, link: '/', title: 'Home'
-    },
-    {
-        id: 2, link: 'blog/', title: 'Blog'
-    },
-    {
-        id: 3, link: 'comments/', title: 'Comments'
-    },
-    {
-        id: 4, link: 'users/', title: 'Users'
-    }
-];
-const sideBar = [
-    {
-        id: 5, link: '#', title: 'About'
-    },
-    {
-        id: 6, link: '#', title: 'Archives'
-    },
-    {
-        id: 7, link: '#', title: 'Elsewhere'
-    }
-];
+import { menuItems, sideBar, footer } from '../consts/consts';
 
-const footer = [
-    {
-        id: 8, link: 'https://www.facebook.com/profile.php?id=100014087160478'
-    },
-    {
-        id: 9, link: 'https://vk.com/id15189473'
-    },
-    {
-        id: 10, link: 'https://github.com/eaonufriychuk'
-    }
-];
+import routes from '../routes';
 
-export default class Main extends Component {
+export default class Main extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -54,26 +21,32 @@ export default class Main extends Component {
     }
 
     onModalClose = () => {
-        this.setState({showModal: false})
+        this.setState({ showModal: false })
     };
 
     render() {
-        const {showModal} = this.state;
+        const { showModal } = this.state;
 
         return (
             <div className="wrapper">
                 <div className="layer"></div>
-                {showModal && <ModalWindow onModalClose={this.onModalClose}/>}
+                {showModal && <ModalWindow onModalClose={this.onModalClose} />}
                 <div className="content">
-                    <Header selector="menu" items={menuItems} modalShow="true"/>
-                    <div className="body container">
-                        <div className="row">
-                            <SideBar items={sideBar}/>
-                            { this.props.children }
-                        </div>
-                    </div>
+                    <BrowserRouter>
+                        <Fragment>
+                            <Header selector="menu" items={menuItems} modalShow="true" />
+                            <div className="body container">
+                                <div className="row">
+                                    <SideBar items={sideBar} />
+                                    <Switch>
+                                        {routes.map(route => <Route key={route.id} {...route} />)}
+                                    </Switch>
+                                </div>
+                            </div>
+                        </Fragment>
+                    </BrowserRouter>
                 </div>
-                <Footer items={footer}/>
+                <Footer items={footer} />
             </div>
         );
     }

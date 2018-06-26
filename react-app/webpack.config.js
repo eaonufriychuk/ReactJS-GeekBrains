@@ -12,13 +12,13 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js', '.jsx'],
-        alias:{
-            components: path.resolve(__dirname, 'src/components')
+        alias: {
+            components: path.resolve(__dirname, 'src/components'),
+            containers: path.resolve(__dirname, 'src/containers')
         }
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: {
@@ -29,7 +29,7 @@ module.exports = {
                 test: /\.s?css$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: ['css-loader','postcss-loader', 'sass-loader']
+                    use: ['css-loader', 'postcss-loader', 'sass-loader']
                 })
             },
             {
