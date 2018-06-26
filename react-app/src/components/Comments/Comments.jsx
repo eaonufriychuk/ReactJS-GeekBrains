@@ -1,7 +1,8 @@
+import './Comments.css';
+
 import React, { PureComponent, Fragment } from 'react';
 
 import { connect } from 'react-redux';
-import './Comments.css';
 import { addToDO, removeToDO } from '../../actions';
 import { v4 } from 'uuid';
 
