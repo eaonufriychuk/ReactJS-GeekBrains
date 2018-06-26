@@ -1,6 +1,4 @@
-import {
-  v4
-} from 'uuid';
+import { v4 } from 'uuid';
 
 export const menuItems = [{
     id: v4(),
