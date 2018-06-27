@@ -1,6 +1,6 @@
-import React, {Component, Fragment} from 'react';
+import React, { PureComponent, Fragment } from 'react';
 
-export default class Article extends Component {
+export default class Article extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -9,8 +9,8 @@ export default class Article extends Component {
     }
 
     render() {
-        const {title} = this.props;
-        const {isOpen} = this.state;
+        const { title } = this.props;
+        const { isOpen } = this.state;
         return (
             <div className="card">
                 <div className="card-header">
@@ -21,16 +21,16 @@ export default class Article extends Component {
                 <div className="card-body">
                     {this.getArticle()}
                     <button onClick={this.toggleOpen} type="button"
-                            className="btn btn-info">{isOpen ? 'Close' : 'Open'}</button>
+                        className="btn btn-info">{isOpen ? 'Close' : 'Open'}</button>
                 </div>
             </div>);
     }
 
     getArticle() {
-        const {bodyShort, body} = this.props;
-        const {isOpen} = this.state;
+        const { body } = this.props;
+        const { isOpen } = this.state;
         return isOpen ? <Fragment><p>{body}</p></Fragment> :
-            <Fragment><p>{bodyShort}</p></Fragment>;
+            <Fragment><p>Открыть статью...</p></Fragment>;
     }
 
     toggleOpen = () => {

@@ -1,12 +1,12 @@
 import './Footer.css';
 
-import React, {Component} from 'react';
+import React, { PureComponent } from 'react';
 
-import {SocialIcon} from 'react-social-icons';
+import { SocialIcon } from 'react-social-icons';
 
-export default class Footer extends Component {
+export default class Footer extends PureComponent {
     render() {
-        const {items} = this.props;
+        const { items } = this.props;
         return (
             <div className="footer">
                 <div className="container">
@@ -17,7 +17,7 @@ export default class Footer extends Component {
                         {items.map(item => {
                             return (
                                 <div key={item.id} className="icon">
-                                    <SocialIcon url={item.link} style={{height: 35, width: 35}}/>
+                                    <SocialIcon url={item.link} style={{ height: 35, width: 35 }} />
                                 </div>
                             )
                         })}
