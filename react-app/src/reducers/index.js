@@ -1,13 +1,11 @@
-export default (state = [], {
-  type,
-  payload
-}) => {
-  switch (type) {
-    case 'ADD_TODO':
-      return [...state, payload];
-    case 'REMOVE_TODO':
-      return state.filter(comment => comment.id !== payload);
-    default:
-      return state;
-  }
-}
+import {
+  combineReducers
+} from 'redux';
+
+import users from './users';
+import comments from './comments';
+
+export default combineReducers({
+  users,
+  comments,
+});

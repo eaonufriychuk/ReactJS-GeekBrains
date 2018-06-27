@@ -4,7 +4,7 @@ import React, { PureComponent, Fragment } from 'react';
 import Comment from '../Comment';
 import { connect } from 'react-redux';
 
-import { addToDO, removeToDO } from '../../actions';
+import { addComment, removeComment } from '../../actions/comments';
 import { v4 } from 'uuid';
 import { formatDate } from '../../consts/consts';
 
@@ -19,14 +19,15 @@ class CommentList extends PureComponent {
                 date: formatDate(new Date())
             }
 
-            this.props.handleAddToDO(comment);
+            this.props.handleAddComment(comment);
 
             event.preventDefault();
         }
     }
 
     render() {
-        const { toDoList, onRemove } = this.props;
+        const { commentList, onRemove } = this.props;
+        console.log(commentList);
 
         return (
             <div className="col-9" >
@@ -58,7 +59,7 @@ class CommentList extends PureComponent {
                 </div>
                 <div className="content-wrap">
                     <Fragment>
-                        {toDoList.map((comment) => <Comment {...comment} onRemove={onRemove} />)}
+                        {commentList.map((comment) => <Comment {...comment} onRemove={onRemove} />)}
                     </Fragment>
                 </div>
             </div>
@@ -67,9 +68,25 @@ class CommentList extends PureComponent {
 }
 
 export default connect(
-    (state) => ({ toDoList: state }),
-    dispatch => ({
-        handleAddToDO: todo => dispatch(addToDO(todo)),
-        onRemove: id => () => dispatch(removeToDO(id))
-    })
+    (state, props) => {
+        return {
+            ...props,
+            commentList: state.comments,
+        }
+    },
+    (dispatch, props) => {
+        return {
+            ...props,
+            handleAddComment: comment => dispatch(addComment(comment)),
+            onRemove: commentId => () => dispatch(removeComment(commentId)),
+        }
+    }
 )(CommentList);
+
+// export default connect(
+//     (state) => ({ toDoList: state }),
+//     dispatch => ({
+//         handleAddToDO: todo => dispatch(addToDO(todo)),
+//         onRemove: id => () => dispatch(removeToDO(id))
+//     })
+// )(CommentList);
