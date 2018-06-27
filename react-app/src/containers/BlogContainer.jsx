@@ -35,6 +35,7 @@ export default class BlogContainer extends PureComponent {
     componentDidMount() {
         this.loadPosts();
     }
+
     handleLoadMore = () => {
         this.loadPosts();
     };

@@ -27,7 +27,6 @@ class CommentList extends PureComponent {
 
     render() {
         const { toDoList, onRemove } = this.props;
-        console.log(toDoList);
 
         return (
             <div className="col-9" >
