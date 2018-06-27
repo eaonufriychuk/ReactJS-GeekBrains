@@ -27,7 +27,6 @@ class CommentList extends PureComponent {
 
     render() {
         const { commentList, onRemove } = this.props;
-        console.log(commentList);
 
         return (
             <div className="col-9" >
@@ -82,11 +81,3 @@ export default connect(
         }
     }
 )(CommentList);
-
-// export default connect(
-//     (state) => ({ toDoList: state }),
-//     dispatch => ({
-//         handleAddToDO: todo => dispatch(addToDO(todo)),
-//         onRemove: id => () => dispatch(removeToDO(id))
-//     })
-// )(CommentList);
