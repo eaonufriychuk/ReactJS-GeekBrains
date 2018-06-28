@@ -1,50 +1,58 @@
 import React, { PureComponent, Fragment } from 'react';
 
-import PostList from '../components/PostList';
+import { connect } from 'react-redux';
+import { loadPosts } from 'actions/posts';
 
-export default class BlogContainer extends PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {
-            page: 1,
-            posts: [],
-            loading: false,
-        }
-    }
+import PostList from 'components/PostList';
 
-    loadPosts() {
-        const { page, posts } = this.state;
-
-        if (page === 1) {
-            this.setState({ loading: true });
-        }
-        fetch(`https://jsonplaceholder.typicode.com/posts/?limit=10&_page=${page}`)
-            .then((response) => response.json())
-            .then((result) => {
-                this.setState({
-                    page: page + 1,
-                    posts: [...posts, ...result],
-                    loading: false
-                })
-            })
-            .catch(() => {
-                this.setState({ loading: false });
-            });
-    }
+class BlogContainer extends PureComponent {
 
     componentDidMount() {
-        this.loadPosts();
+        const { load } = this.props;
+
+        load();
     }
 
     handleLoadMore = () => {
-        this.loadPosts();
+        const { load } = this.props;
+
+        load();
     };
 
     render() {
+        const { loading, posts } = this.props;
+
         return (
             <Fragment>
-                {this.state.loading ? <div>Loading...</div> : < PostList onLoadPosts={this.handleLoadMore} posts={this.state.posts} />}
+                {loading && !posts.length ? <div>Loading...</div> : < PostList
+                    onLoadPosts={this.handleLoadMore}
+                    posts={posts} />}
             </Fragment>
         )
     }
 }
+
+export default connect(
+    (state, props) => {
+        console.log(state);
+        return {
+            ...props,
+            page: state.posts.page,
+            loading: state.posts.loading,
+            posts: state.posts.entries,
+        }
+    },
+    (dispatch, props) => {
+        return {
+            ...props,
+            load: loadPosts.bind(null, dispatch),
+        }
+    },
+    (stateProps, dispatchProps, ownProps) => {
+        return {
+            ...stateProps,
+            ...ownProps,
+            load: () => dispatchProps.load(stateProps.page),
+        }
+    }
+)(BlogContainer);

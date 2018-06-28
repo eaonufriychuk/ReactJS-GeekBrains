@@ -5,7 +5,7 @@ import {
 import {
   addComment,
   removeComment
-} from '../actions/comments';
+} from 'actions/comments';
 
 const initialState = [{
     id: 'id-1',

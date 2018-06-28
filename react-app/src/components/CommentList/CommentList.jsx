@@ -4,9 +4,9 @@ import React, { PureComponent, Fragment } from 'react';
 import Comment from '../Comment';
 import { connect } from 'react-redux';
 
-import { addComment, removeComment } from '../../actions/comments';
+import { addComment, removeComment } from 'actions/comments';
 import { v4 } from 'uuid';
-import { formatDate } from '../../consts/consts';
+import { formatDate } from 'constants/constants';
 
 class CommentList extends PureComponent {
 
@@ -68,6 +68,7 @@ class CommentList extends PureComponent {
 
 export default connect(
     (state, props) => {
+        console.log(state);
         return {
             ...props,
             commentList: state.comments,

@@ -3,33 +3,35 @@ import {
 } from 'redux-actions';
 
 import {
-  loadStarted,
-  loadCompleted,
-  loadFailed
-} from 'actions/users';
+  loadPostsStarted,
+  loadPostsCompleted,
+  loadPostsFailed
+} from 'actions/posts';
 
 const initialState = {
   loading: false,
   error: null,
   entries: [],
+  page: 1
 }
 
 export default handleActions({
-    [loadStarted]: (state) => {
+    [loadPostsStarted]: (state) => {
       return {
         ...state,
         error: null,
         loading: true
       };
     },
-    [loadCompleted]: (state, action) => {
+    [loadPostsCompleted]: (state, action) => {
       return {
         ...state,
-        entries: action.payload,
+        page: state.page + 1,
+        entries: [...state.entries, ...action.payload],
         loading: false,
       };
     },
-    [loadFailed]: (state, action) => {
+    [loadPostsFailed]: (state, action) => {
       return {
         ...state,
         loading: false,

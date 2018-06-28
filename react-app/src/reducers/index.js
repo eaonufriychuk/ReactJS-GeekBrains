@@ -4,8 +4,10 @@ import {
 
 import users from './users';
 import comments from './comments';
+import posts from './posts';
 
 export default combineReducers({
   users,
   comments,
+  posts,
 });

@@ -1,8 +1,8 @@
-import Home from './components/Home';
-import Blog from './containers/BlogContainer';
-import CommentList from './components/CommentList';
-import UserList from './containers/UserListContainer';
-import User from './containers/UserContainer';
+import Home from 'components/Home';
+import Blog from 'containers/BlogContainer';
+import CommentList from 'components/CommentList';
+import UserList from 'containers/UserListContainer';
+import User from 'containers/UserContainer';
 import {
   v4
 } from 'uuid';
