@@ -2,7 +2,6 @@ import {
   createAction
 } from 'redux-actions';
 
-
 export const loadPostsStarted = createAction('[Posts] Load posts started');
 export const loadPostsCompleted = createAction('[Posts] Load posts completed');
 export const loadPostsFailed = createAction('[Posts] Load posts failed');
