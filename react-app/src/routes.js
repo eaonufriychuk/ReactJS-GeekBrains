@@ -1,6 +1,6 @@
 import Home from 'components/Home';
 import Blog from 'containers/BlogContainer';
-import CommentList from 'components/CommentList';
+import CommentList from 'containers/CommentListContainer';
 import UserList from 'containers/UserListContainer';
 import User from 'containers/UserContainer';
 import {

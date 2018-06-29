@@ -2,13 +2,11 @@ import './CommentList.css';
 
 import React, { PureComponent, Fragment } from 'react';
 import Comment from '../Comment';
-import { connect } from 'react-redux';
 
-import { addComment, removeComment } from 'actions/comments';
 import { v4 } from 'uuid';
 import { formatDate } from 'constants/constants';
 
-class CommentList extends PureComponent {
+export default class CommentList extends PureComponent {
 
     handleSubmit = (event) => {
         if (event.target.userName.value && event.target.userComment.value) {
@@ -65,20 +63,3 @@ class CommentList extends PureComponent {
         );
     }
 }
-
-export default connect(
-    (state, props) => {
-        console.log(state);
-        return {
-            ...props,
-            commentList: state.comments,
-        }
-    },
-    (dispatch, props) => {
-        return {
-            ...props,
-            handleAddComment: comment => dispatch(addComment(comment)),
-            onRemove: commentId => () => dispatch(removeComment(commentId)),
-        }
-    }
-)(CommentList);
