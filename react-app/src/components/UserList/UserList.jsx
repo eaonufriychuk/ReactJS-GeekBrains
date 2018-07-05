@@ -13,7 +13,7 @@ export default class UserList extends PureComponent {
           </div>
           <div className="card-body">
             <ul>
-              {users.map(user => <li key={user.id}><Link to={`/users/${user.id}`}>{user.name}</Link></li>)}
+              {users.map(user => <li key={user._id}><Link to={`/users/${user._id}`}>{user.name}</Link></li>)}
             </ul>
           </div>
         </div>

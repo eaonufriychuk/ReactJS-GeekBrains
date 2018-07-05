@@ -19,6 +19,6 @@ class UserContainer extends PureComponent {
 
 export default connect(
   (state, props) => ({
-    user: state.users.entries.find((user) => user.id === +props.match.params.id)
+    user: state.users.entries.find((user) => user._id === props.match.params.id)
   })
 )(UserContainer);

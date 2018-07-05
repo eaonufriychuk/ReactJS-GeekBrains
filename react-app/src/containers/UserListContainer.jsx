@@ -37,6 +37,6 @@ export default connect(
   (dispatch, props) => {
     return {
       ...props,
-      load: () => loadUsers(dispatch),
+      load: () => dispatch(loadUsers()),
     }
   })(UserListContainer);

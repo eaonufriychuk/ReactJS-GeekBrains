@@ -45,14 +45,7 @@ export default connect(
     (dispatch, props) => {
         return {
             ...props,
-            load: loadPosts.bind(null, dispatch),
+            load: () => dispatch(loadPosts()),
         }
     },
-    (stateProps, dispatchProps, ownProps) => {
-        return {
-            ...stateProps,
-            ...ownProps,
-            load: () => dispatchProps.load(stateProps.page),
-        }
-    }
 )(BlogContainer);
