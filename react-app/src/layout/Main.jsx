@@ -8,9 +8,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import SideBar from 'components/SideBar';
-import ModalWindow from "components/ModalWindow";
+import ModalWindow from 'components/ModalWindow';
 
-import { menuItems, sideBar, footer } from '../consts/consts';
+import { menuItems, sideBar, footer } from 'constants/constants';
 
 import routes from '../routes';
 

@@ -2,13 +2,11 @@ import './CommentList.css';
 
 import React, { PureComponent, Fragment } from 'react';
 import Comment from '../Comment';
-import { connect } from 'react-redux';
 
-import { addToDO, removeToDO } from '../../actions';
 import { v4 } from 'uuid';
-import { formatDate } from '../../consts/consts';
+import { formatDate } from 'constants/constants';
 
-class CommentList extends PureComponent {
+export default class CommentList extends PureComponent {
 
     handleSubmit = (event) => {
         if (event.target.userName.value && event.target.userComment.value) {
@@ -19,14 +17,14 @@ class CommentList extends PureComponent {
                 date: formatDate(new Date())
             }
 
-            this.props.handleAddToDO(comment);
+            this.props.handleAddComment(comment);
 
             event.preventDefault();
         }
     }
 
     render() {
-        const { toDoList, onRemove } = this.props;
+        const { commentList, onRemove } = this.props;
 
         return (
             <div className="col-9" >
@@ -58,18 +56,10 @@ class CommentList extends PureComponent {
                 </div>
                 <div className="content-wrap">
                     <Fragment>
-                        {toDoList.map((comment) => <Comment {...comment} onRemove={onRemove} />)}
+                        {commentList.map((comment) => <Comment {...comment} onRemove={onRemove} />)}
                     </Fragment>
                 </div>
             </div>
         );
     }
 }
-
-export default connect(
-    (state) => ({ toDoList: state }),
-    dispatch => ({
-        handleAddToDO: todo => dispatch(addToDO(todo)),
-        onRemove: id => () => dispatch(removeToDO(id))
-    })
-)(CommentList);

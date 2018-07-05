@@ -1,44 +1,24 @@
 import React, { PureComponent, Fragment } from 'react';
 
+import { connect } from 'react-redux';
+
 import User from 'components/User';
 
-export default class UserListContainer extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      loading: false,
-      user: {}
-    };
-  }
-
-  load() {
-    const { match } = this.props;
-
-    this.setState({ loading: true });
-    fetch(`https://jsonplaceholder.typicode.com/users/${match.params.id}`)
-      .then((response) => response.json())
-      .then((user) => {
-        this.setState({
-          loading: false,
-          user
-        })
-      })
-      .catch(() => {
-        this.setState({ loading: false });
-      });
-  }
-
-  componentDidMount() {
-    this.load();
-  }
+class UserContainer extends PureComponent {
 
   render() {
-    const { user, loading } = this.state;
+    const { user } = this.props;
+
     return (
       <Fragment>
-        {loading ? <div>Loading...</div> : <User user={user} />}
+        <User user={user} />
       </Fragment>
     );
   }
 }
+
+export default connect(
+  (state, props) => ({
+    user: state.users.entries.find((user) => user._id === props.match.params.id)
+  })
+)(UserContainer);
