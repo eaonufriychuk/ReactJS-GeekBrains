@@ -34,7 +34,6 @@ class BlogContainer extends PureComponent {
 
 export default connect(
     (state, props) => {
-        console.log(state);
         return {
             ...props,
             page: state.posts.page,
